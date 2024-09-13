@@ -3,32 +3,43 @@
 ////////////////////////////////////////////////////////////////////////
 
 class Aluno {
+  constructor(Nome, Idade, Nota){
+    this.Nome = Nome
+    this.Idade = Idade
+    this.Nota = Nota
+  
+  }
   
 }
 
-// Array
-
+arrayAlunos = []
 
 //funções projeto
 
-function CadastrarAluno() {
+function CadastrarAluno(nome, idade, nota) {
+  let aluno = new Aluno (nome, idade, nota)
+  arrayAlunos.push(aluno)
+
+  return aluno
   
 }
 
 function OrdenarPorNota() {
- 
+ return arrayAlunos.sort((a, b) => a.Nota - b.Nota)
 }
 
 function OrdenarPorIdade() {
-
+  return arrayAlunos.sort((a, b) => a.Idade - b.Idade)
 }
 
 function OrdenarPorNome() {
-
+  return arrayAlunos.sort((a, b) => a.Nome.localeCompare(b.Nome))
 }
 
-function CalcularMedia(){
-
+function CalcularMedia(notas){
+ let notasDosALunos = arrayAlunos.reduce((acumulador, aluno) => acumulador + parseFloat(aluno.Nota), 0)
+ let media = notasDosALunos / arrayAlunos.length
+ return media
 }
 
 ////////////////////////////////////////////////////////////////////////
